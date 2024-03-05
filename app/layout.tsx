@@ -6,19 +6,19 @@ import { Analytics } from "./components/analytics";
 
 export const metadata: Metadata = {
   title: {
-    default: "chronark.com",
-    template: "%s | chronark.com",
+    default: "canameti.de",
+    template: "%s | canameti.de",
   },
-  description: "Co-founder of unkey.dev and founder of planetfall.io",
+  description: "Development Lead of storyline-rp.de",
   openGraph: {
-    title: "chronark.com",
+    title: "canameti.de",
     description:
-      "Co-founder of unkey.dev and founder of planetfall.io",
-    url: "https://chronark.com",
-    siteName: "chronark.com",
+      "Development Lead of storyline-rp.de",
+    url: "https://canameti.de",
+    siteName: "canameti.de",
     images: [
       {
-        url: "https://chronark.com/og.png",
+        url: "",
         width: 1920,
         height: 1080,
       },
@@ -38,7 +38,7 @@ export const metadata: Metadata = {
     },
   },
   twitter: {
-    title: "Chronark",
+    title: "canameti_",
     card: "summary_large_image",
   },
   icons: {
