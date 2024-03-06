@@ -109,7 +109,7 @@ export default async function ProjectsPage() {
               Partner
             </h2>
             <p className="mt-4 text-zinc-400">
-              Partnerships and collaborations that contribute to our projects and goals.
+              Partnerships and collaborations that contribute to my projects and goals.
             </p>
           </div>
         </div>
