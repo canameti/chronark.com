@@ -21,8 +21,8 @@ export default async function ProjectsPage() {
   }, {} as Record<string, number>);
 
   const featured = allProjects.find((project) => project.slug === "storyline")!;
-  const top2 = allProjects.find((project) => project.slug === "planetfall")!;
-  const top3 = allProjects.find((project) => project.slug === "highstorm")!;
+  const top2 = allProjects.find((project) => project.slug === "mxcustomsup")!;
+  const top3 = allProjects.find((project) => project.slug === "loading")!;
   const sorted = allProjects
     .filter((p) => p.published)
     .filter(
@@ -102,6 +102,17 @@ export default async function ProjectsPage() {
           </div>
         </div>
         <div className="hidden w-full h-px md:block bg-zinc-800" />
+
+        <div className="px-6 pt-32 mx-auto space-y-8 max-w-7xl lg:px-8 md:space-y-16 md:pt-24 lg:pt-0">
+          <div className="max-w-2xl mx-auto lg:mx-0">
+            <h2 className="text-3xl font-bold tracking-tight text-zinc-100 sm:text-4xl">
+              Partner
+            </h2>
+            <p className="mt-4 text-zinc-400">
+              Partnerships and collaborations that contribute to our projects and goals.
+            </p>
+          </div>
+        </div>
 
         <div className="grid grid-cols-1 gap-4 mx-auto lg:mx-0 md:grid-cols-3">
           <div className="grid grid-cols-1 gap-4">
