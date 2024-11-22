@@ -8,7 +8,7 @@ import {
 import { MouseEventHandler, PropsWithChildren } from "react";
 
 interface CardProps extends PropsWithChildren {
-	className?: string; // Add className prop
+	className?: string;
 }
 
 export const Card: React.FC<CardProps> = ({ children, className }) => {
@@ -21,13 +21,17 @@ export const Card: React.FC<CardProps> = ({ children, className }) => {
 		mouseY.set(clientY - top);
 	}
 
-	const maskImage = useMotionTemplate`radial-gradient(240px at ${mouseX}px ${mouseY}px, white, transparent)`;
+	const maskImage = useMotionTemplate`radial-gradient(300px at ${mouseX}px ${mouseY}px, white, transparent)`;
 	const style = { maskImage, WebkitMaskImage: maskImage };
 
 	return (
-		<div
+		<motion.div
 			onMouseMove={onMouseMove}
-			className={`overflow-hidden relative duration-700 border rounded-xl hover:bg-zinc-800/10 group md:gap-8 hover:border-zinc-400/50 border-zinc-600 ${className}`} // Apply custom className here
+			className={`relative overflow-hidden rounded-xl glass-card hover:border-zinc-400/50 transition-all duration-700 ${className}`}
+			whileHover={{ scale: 1.02 }}
+			initial={{ opacity: 0, y: 20 }}
+			animate={{ opacity: 1, y: 0 }}
+			transition={{ duration: 0.4 }}
 		>
 			<div className="pointer-events-none">
 				<div className="absolute inset-0 z-0 transition duration-1000 [mask-image:linear-gradient(black,transparent)]" />
@@ -42,6 +46,6 @@ export const Card: React.FC<CardProps> = ({ children, className }) => {
 			</div>
 
 			{children}
-		</div>
+		</motion.div>
 	);
 };

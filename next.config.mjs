@@ -6,6 +6,12 @@ const nextConfig = {
 	experimental: {
 		mdxRs: true,
 	},
+	webpack: (config) => {
+		config.infrastructureLogging = {
+			level: "error",
+		};
+		return config;
+	},
 };
 
 export default withContentlayer(nextConfig);
