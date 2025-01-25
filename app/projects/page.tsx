@@ -6,30 +6,49 @@ import { Card } from "../components/card";
 import { Article } from "./article";
 import { Redis } from "@upstash/redis";
 import { Eye } from "lucide-react";
+import { unstable_cache } from 'next/cache';
 
 const redis = Redis.fromEnv();
 
+// Cache the view counts for 1 hour
+const getProjectViews = unstable_cache(
+  async () => {
+    try {
+      const views = await redis.mget<number[]>(
+        ...allProjects.map((p) => ["pageviews", "projects", p.slug].join(":")),
+      );
+      return views ?? new Array(allProjects.length).fill(0);
+    } catch (error) {
+      console.error('Failed to fetch Redis views:', error);
+      return new Array(allProjects.length).fill(0);
+    }
+  },
+  ['project-views'],
+  {
+    revalidate: 3600, // Cache for 1 hour
+    tags: ['project-views']
+  }
+);
+
 export const revalidate = 60;
 export default async function ProjectsPage() {
-  const views = (
-    await redis.mget<number[]>(
-      ...allProjects.map((p) => ["pageviews", "projects", p.slug].join(":")),
-    )
-  ).reduce((acc, v, i) => {
+  const views = await getProjectViews();
+  
+  const viewsRecord = views.reduce((acc, v, i) => {
     acc[allProjects[i].slug] = v ?? 0;
     return acc;
   }, {} as Record<string, number>);
 
   const featured = allProjects.find((project) => project.slug === "storyline")!;
   const top2 = allProjects.find((project) => project.slug === "mxcustomsup")!;
-  const top3 = allProjects.find((project) => project.slug === "alteatro")!;
+  // const top3 = allProjects.find((project) => project.slug === "alteatro")!;
   const sorted = allProjects
     .filter((p) => p.published)
     .filter(
       (project) =>
         project.slug !== featured.slug &&
-        project.slug !== top2.slug &&
-        project.slug !== top3.slug,
+        project.slug !== top2.slug,
+        // project.slug !== top3.slug,
     )
     .sort(
       (a, b) =>
@@ -70,7 +89,7 @@ export default async function ProjectsPage() {
                   <span className="flex items-center gap-1 text-xs text-zinc-500">
                     <Eye className="w-4 h-4" />{" "}
                     {Intl.NumberFormat("en-US", { notation: "compact" }).format(
-                      views[featured.slug] ?? 0,
+                      viewsRecord[featured.slug] ?? 0,
                     )}
                   </span>
                 </div>
@@ -94,9 +113,9 @@ export default async function ProjectsPage() {
           </Card>
 
           <div className="flex flex-col w-full gap-8 mx-auto border-t border-gray-900/10 lg:mx-0 lg:border-t-0 ">
-            {[top2, top3].map((project) => (
+            {[top2].map((project) => (
               <Card key={project.slug}>
-                <Article project={project} views={views[project.slug] ?? 0} />
+                <Article project={project} views={viewsRecord[project.slug] ?? 0} />
               </Card>
             ))}
           </div>
@@ -120,7 +139,7 @@ export default async function ProjectsPage() {
               .filter((_, i) => i % 3 === 0)
               .map((project) => (
                 <Card key={project.slug}>
-                  <Article project={project} views={views[project.slug] ?? 0} />
+                  <Article project={project} views={viewsRecord[project.slug] ?? 0} />
                 </Card>
               ))}
           </div>
@@ -129,7 +148,7 @@ export default async function ProjectsPage() {
               .filter((_, i) => i % 3 === 1)
               .map((project) => (
                 <Card key={project.slug}>
-                  <Article project={project} views={views[project.slug] ?? 0} />
+                  <Article project={project} views={viewsRecord[project.slug] ?? 0} />
                 </Card>
               ))}
           </div>
@@ -138,7 +157,7 @@ export default async function ProjectsPage() {
               .filter((_, i) => i % 3 === 2)
               .map((project) => (
                 <Card key={project.slug}>
-                  <Article project={project} views={views[project.slug] ?? 0} />
+                  <Article project={project} views={viewsRecord[project.slug] ?? 0} />
                 </Card>
               ))}
           </div>
