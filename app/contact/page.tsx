@@ -14,9 +14,9 @@ const socials = [
 	},
 	{
 		icon: <Mail size={24} />,
-		href: "", // mailto:info@canameti.de
-		label: "Mail (Currently offline)",
-		handle: "info@canameti.de",
+		href: "contact@canameti.de", // mailto:info@canameti.de
+		label: "Mail",
+		handle: "contact@canameti.de",
 		id: "mail"
 	},
 	{
