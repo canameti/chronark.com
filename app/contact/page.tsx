@@ -6,13 +6,6 @@ import { Card } from "../components/card";
 
 const socials = [
 	{
-		icon: <X size={24} />,
-		href: "https://x.com/canameti_",
-		label: "X (Twitter)",
-		handle: "@canameti_",
-		id: "twitter"
-	},
-	{
 		icon: <Mail size={24} />,
 		href: "contact@canameti.de", // mailto:info@canameti.de
 		label: "Mail",
@@ -40,7 +33,7 @@ export default function Example() {
 		<div className="bg-gradient-to-tl from-zinc-900/0 via-zinc-900 to-zinc-900/0">
 			<Navigation />
 			<div className="container flex items-center justify-center min-h-screen px-4 mx-auto">
-				<div className="grid w-full grid-cols-1 gap-8 mx-auto mt-32 sm:mt-0 sm:grid-cols-2 lg:grid-cols-4 lg:gap-16">
+				<div className="grid w-full grid-cols-1 gap-8 mx-auto mt-32 sm:mt-0 sm:grid-cols-2 lg:grid-cols-3 lg:gap-16">
 					{socials.map((s) => (
 						<Card key={s.id}>
 							<Link
