@@ -9,11 +9,11 @@ export const metadata: Metadata = {
     default: "canameti.de",
     template: "%s | canameti.de",
   },
-  description: "Development Lead of storyline-rp.de",
+  description: "System Engineer and Developer",
   openGraph: {
     title: "canameti.de",
     description:
-      "Development Lead of storyline-rp.de",
+      "System Engineer and Developer",
     url: "https://canameti.de",
     siteName: "canameti.de",
     images: [
