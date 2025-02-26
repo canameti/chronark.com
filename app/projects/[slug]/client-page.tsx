@@ -4,16 +4,22 @@ import { motion } from "framer-motion";
 import { ArrowLeft, Github, Link as LinkIcon } from "lucide-react";
 import Link from "next/link";
 
+interface ProjectData {
+    title: string;
+    description: string;
+    date: string;
+    url?: string;
+    repository?: string;
+    published: boolean;
+    content: string;
+    slug: string;
+    discontinued?: boolean;
+    image?: string;
+    techBadges?: string[];
+}
+
 interface ClientPageProps {
-    project: {
-        title: string;
-        description: string;
-        url?: string;
-        repository?: string;
-        image?: string;
-        discontinued?: boolean;
-        techBadges?: string[];
-    };
+    project: ProjectData;
     content: any;
 }
 

@@ -1,7 +1,14 @@
 import React from 'react';
 import { getProjectFromSlug } from '@/lib/projects';
+import { Metadata } from 'next';
 
-export async function generateMetadata({ params }) {
+interface GenerateMetadataProps {
+    params: {
+        slug: string;
+    };
+}
+
+export async function generateMetadata({ params }: GenerateMetadataProps): Promise<Metadata> {
     const project = await getProjectFromSlug(params.slug);
     return {
         title: `${project.title} | Canameti`,
