@@ -1,0 +1,17 @@
+/* Add these to your existing styles */
+
+.pricing-card-hover {
+    transition: transform 0.3s ease-in-out;
+}
+
+.pricing-card-hover:hover {
+    transform: translateY(-8px);
+}
+
+.form-input-focus {
+    transition: all 0.3s ease-in-out;
+}
+
+.form-input-focus:focus {
+    box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.2);
+} 
