@@ -6,16 +6,16 @@ import { Analytics } from "./components/analytics";
 
 export const metadata: Metadata = {
   title: {
-    default: "canameti.de",
-    template: "%s | canameti.de",
+    default: "Can Ameti  | Portfolio",
+    template: "%s | canameti.com",
   },
   description: "System Engineer and Developer",
   openGraph: {
-    title: "canameti.de",
+    title: "canameti.com",
     description:
       "System Engineer and Developer",
-    url: "https://canameti.de",
-    siteName: "canameti.de",
+    url: "https://canameti.com",
+    siteName: "canameti.com",
     images: [
       {
         url: "",

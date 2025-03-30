@@ -7,9 +7,9 @@ import { Card } from "../components/card";
 const socials = [
 	{
 		icon: <Mail size={24} />,
-		href: "contact@canameti.de", // mailto:info@canameti.de
+		href: "contact@canameti.com", // mailto:info@canameti.com
 		label: "Mail",
-		handle: "contact@canameti.de",
+		handle: "contact@canameti.com",
 		id: "mail"
 	},
 	{

@@ -63,7 +63,7 @@ export default function ServicesPage() {
                                     ))}
                                 </div>
                                 <a
-                                    href="mailto:contact@canameti.de"
+                                    href="mailto:contact@canameti.com"
                                     className="mt-12 px-8 py-4 rounded-full text-base font-medium text-center transition-all duration-300 bg-emerald-500 hover:bg-emerald-600 text-white shadow-lg hover:shadow-emerald-500/25"
                                 >
                                     Discuss Your Project

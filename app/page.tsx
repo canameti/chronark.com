@@ -95,27 +95,10 @@ export default function Home() {
                     <span className="text-zinc-400">Exploring the intersection of technology and creativity.</span>
                 </p>
             </div>
-
-            <div className="absolute bottom-0 w-full">
-                <button
-                    className="absolute left-1/2 -translate-x-1/2 bottom-20 px-8 py-3 bg-gradient-to-r from-emerald-600 to-emerald-700 rounded-full text-white font-medium shadow-lg shadow-emerald-900/30 hover:shadow-emerald-900/50 transition-all duration-300 hover:-translate-y-2"
-                    onClick={() => window.open('https://donate.unrwa.org/one-time/~my-donation', '_blank')}
-                >
-                    Donate Now
-                </button>
-
-                <div className="h-[1px] bg-gradient-to-r from-transparent via-zinc-500/50 to-transparent animate-glow" />
-
-                <div className="py-4 text-center bg-black/50 backdrop-blur-sm">
-                    <p className="text-sm text-zinc-500">
-                        Donate for our brothers and sisters in Palestine
-                        <img
-                            src="https://upload.wikimedia.org/wikipedia/commons/0/00/Flag_of_Palestine.svg"
-                            alt="Palestine Flag"
-                            className="inline-block w-6 h-4 ml-2 align-middle"
-                        />
-                    </p>
-                </div>
+            <div className="absolute bottom-0 left-0 right-0 flex items-center justify-center w-full p-4 text-sm text-zinc-500 animate-fade-in">
+                <p className="text-center">
+                    © 2025 canameti.com. All rights reserved.
+                </p>
             </div>
         </div>
     );
