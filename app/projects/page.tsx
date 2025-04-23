@@ -39,17 +39,17 @@ export default async function ProjectsPage() {
     return acc;
   }, {} as Record<string, number>);
 
-  // const featured = allProjects.find((project) => project.slug === "storyline")!;
+  const featured = allProjects.find((project) => project.slug === "thecafeteria")!;
   const top2 = allProjects.find((project) => project.slug === "decisiontools")!;
-  // const top2 = allProjects.find((project) => project.slug === "mxcustomsup")!;
+  // const top4 = allProjects.find((project) => project.slug === "thecafeteria")!;
   const top3 = allProjects.find((project) => project.slug === "storyline")!;
   const sorted = allProjects
     .filter((p) => p.published)
     .filter(
       (project) =>
         project.slug !== top3.slug &&
-        project.slug !== top2.slug,
-        // project.slug !== top3.slug,
+        project.slug !== top2.slug &&
+        project.slug !== featured.slug,
     )
     .sort(
       (a, b) =>
@@ -81,6 +81,13 @@ export default async function ProjectsPage() {
           </div>}
           { <div className="flex flex-col w-full gap-8 mx-auto border-t border-gray-900/10 lg:mx-0 lg:border-t-0 ">
             {[top3].map((project) => (
+              <Card key={project.slug}>
+                <Article project={project} views={viewsRecord[project.slug] ?? 0} />
+              </Card>
+            ))}
+          </div>}
+          { <div className="flex flex-col w-full gap-8 mx-auto border-t border-gray-900/10 lg:mx-0 lg:border-t-0 ">
+            {[featured].map((project) => (
               <Card key={project.slug}>
                 <Article project={project} views={viewsRecord[project.slug] ?? 0} />
               </Card>
